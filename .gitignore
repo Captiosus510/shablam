@@ -1,0 +1,75 @@
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+
+# Ignore large data files
+data/
+datasets/
+*.csv
+*.tsv
+*.json
+*.zip
+*.tar.gz
+*.7z
+
+# Ignore trained models and checkpoints
+models/
+checkpoints/
+*.h5
+*.ckpt
+*.pth
+*.pt
+
+# Ignore TensorFlow / PyTorch / Keras logs
+logs/
+*.tensorboard
+events.out.tfevents.*
+
+# Ignore experiment outputs (optional)
+results/
+output/
+runs/
+
+# Ignore large file formats for CV (images, videos, etc.)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Ignore configuration files for credentials
+config.yaml
+config.json
+credentials.json
+*.secret
+
+# Ignore package dependencies
+Pipfile.lock
+poetry.lock
+requirements.txt
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore system files (e.g., macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
