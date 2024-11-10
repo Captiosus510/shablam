@@ -32,15 +32,19 @@
             </div>
         </div>        
         <div class="content-output">
-            {% if upload_status %}
+            {% if upload_status and movie_name != "No matching movie found." %}
                 <h2>Predicted Movie: {{ movie_name }}</h2>
-                <p> <strong>{{ movie_descriptions.get(movie_name, "This movie doesnt exist?")[0] }}</strong><br><br>{{ movie_descriptions.get(movie_name, "This movie doesnt exist?")[1] }}</p>
-            {% endif %}
-            {% if not upload_status %}
+                <p><strong>{{ movie_descriptions.get(movie_name, "This movie doesn’t exist?")[0] }}</strong><br><br>{{ movie_descriptions.get(movie_name, "This movie doesn’t exist?")[1] }}</p>
+                
+                {% if image %}
+                    <img src="{{ image }}" alt="Movie Image" style="max-width: 300px; margin-top: 20px;">
+                {% endif %}
+            {% elif upload_status %}
+                <h2>Predicted Movie: No matching movie found.</h2>
+            {% else %}
                 <h2>No clip inputted</h2>
             {% endif %}
         </div>
-        
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
