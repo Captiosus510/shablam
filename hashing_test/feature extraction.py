@@ -38,11 +38,11 @@ def transform_image(path):
 
 def extract_features(image_tensor):
     # turn off gradient tracking, a computationally intense resnet50 feature that is not necessary for our task
-    # torch.set_grad_enabled(False)
+    torch.set_grad_enabled(False)
     # returns a tensor containing the singular feature vector in the last convolutional layer of the model
     features = resnet50(image_tensor)
     # turn gradient tracking back on
-    # torch.set_grad_enabled(True)
+    torch.set_grad_enabled(True)
     # returns a tensor containing the singular feature vector in the last convolutional layer of the model
     return features.squeeze()  # Remove the indication that you are returning a single vector from the tensor
 
@@ -57,7 +57,7 @@ def load_vectors(vector_list, folder_path):
 
 def find_closest_match(query_image_path, feature_list):
     # Extract features from the query image
-    query_features = extract_features(query_image_path).numpy()
+    query_features = extract_features(transform_image(query_image_path)).numpy()
 
     # Compute cosine similarity with each feature vector in the list
     similarities = [1 - cosine(query_features, features) for features in feature_list]
