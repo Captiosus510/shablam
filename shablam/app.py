@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from backend import compare
+# from ..backend.compare import find_best_movie
 
 # Create Flask app
 app = Flask(__name__)
@@ -36,7 +36,7 @@ def index():
             file.save(filepath)
             
             # Call your algorithm here to get the movie name
-            movie_name = compare.find_best_movie(filepath)
+            # movie_name = find_best_movie(filepath)
 
             upload_status = 'success'
             
