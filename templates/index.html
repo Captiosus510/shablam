@@ -8,7 +8,6 @@
 </head>
 <body>
     <header>
-        <h1 style="color: #e6e6e6">Shablam</h1>
     </header>
     
     <div class="content-group">
@@ -16,14 +15,15 @@
             <!-- Wrap the drop area and button in a form -->
             <form action="/" method="POST" enctype="multipart/form-data">
                 <div id="drop-area" class="drop-area">
-                    <p style="color: #d2d2d2">Drag & Drop a file here, or click to select one</p>
+                    <p style="color: #ff66b3">Drag & Drop a file here, or click to select one</p>
                     <input type="file" name="file" id="file" class="file-input" required>
                 </div>
                 
                 <button id="predict-movie-button" type="submit" class="button">
                     What movie is this?
                 </button>
-            </form>
+            </form>          
+
         </div>        
         <div class="content-output">
             {% if upload_status %}
