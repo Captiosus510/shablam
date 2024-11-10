@@ -88,3 +88,4 @@ def get_progress():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    shutil.rmtree('uploads')
