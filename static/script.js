@@ -1,6 +1,10 @@
 // JavaScript to handle drag-and-drop functionality
 const dropArea = document.getElementById("drop-area");
-const fileInput = document.getElementById("file");  // Corrected reference here
+const fileInput = document.getElementById("file");
+const progressContainer = document.querySelector(".progress-container");
+const progressFill = document.getElementById("progress-fill");
+const progressText = document.getElementById("progress-text");
+const form = document.getElementById("upload-form");
 
 // Handle drag events for file input
 dropArea.addEventListener("dragover", (event) => {
@@ -26,13 +30,20 @@ dropArea.addEventListener("click", () => {
     fileInput.click();
 });
 
-document.getElementById("upload-form").addEventListener("submit", function(event) {
-    // Show progress bar container
-    document.querySelector(".progress-container").style.display = "block";
+form.addEventListener("submit", function(event) {
+    // Ensure a file is selected before showing progress
+    if (fileInput.files.length === 0) {
+        event.preventDefault();
+        alert("Please select a file to upload.");
+        return;
+    }
 
-    // Initialize progress values
-    const progressFill = document.getElementById("progress-fill");
-    const progressText = document.getElementById("progress-text");
+    // Show progress bar container
+    progressContainer.style.display = "block";
+    
+    // Reset progress bar
+    progressFill.style.width = "0%";
+    progressText.textContent = "0%";
 
     // Poll the progress endpoint
     function updateProgress() {
