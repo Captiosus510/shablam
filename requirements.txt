@@ -12,3 +12,4 @@ flask
 scenedetect
 pandas
 opencv-python
+requests
