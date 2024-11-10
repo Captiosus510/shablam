@@ -74,7 +74,8 @@ def main(argv):
             scene[1].get_timecode(), scene[1].get_frames()))
 
     # Set output directory for keyframes
-    output_path = os.path.join('keyframes', movie_name)
+    name = movie_name.split('_')[0]
+    output_path = os.path.join('keyframes', name)
     extract_middle_keyframes(video_path, scene_list, output_path)
 
 if __name__ == '__main__':
