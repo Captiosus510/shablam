@@ -1,0 +1,9 @@
+hdbscan
+matplotlib
+numpy
+scikit-image
+scikit-learn
+scipy
+seaborn
+opencv-contrib-python
+torchvision
