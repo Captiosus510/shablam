@@ -54,7 +54,7 @@ def index():
             movie_scores = find_best_movie(filepath, data_dict)
             movie_name, match_val = movie_scores[0]
             if match_val > 0.6:
-                ouput = movie_name
+                ouput = movie_name.title()
             else:
                 ouput = "No matching movie found."
 
