@@ -70,7 +70,6 @@ def index():
 
             # Run the prediction
             result = run_prediction()
-            # os.remove(filepath)
             return render_template(
                 'index.html',
                 movie_name=result,
@@ -88,4 +87,3 @@ def get_progress():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    shutil.rmtree('uploads')
