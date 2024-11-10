@@ -1,23 +1,27 @@
-Project idea: Shablam
+# Shablam
 
-What it does
-Shazam but for videos
-Upload pictures (major scenes from movies?) (or short video clips?) to find their source
+Have you ever scrolled on instagram and seen a scene from a movie or show that was not credited. Have you ever wanted to know where the material is from, but had to scroll through the comments to find it from some good samaritan who posted it? Well with Shablam, this will not be a problem any longer!
 
-How it works
-Video fingerprinting?
-Idk how this works on a more specific level
+## Installation
 
-Why we are doing this
-Convenience: want to watch a movie from a clip you see online but you don’t know where it’s from
-Higher application
-Plagiarism? 
+Clone the repository into your folder and then use [pip](https://pip.pypa.io/en/stable/) to install the required dependencies.
 
-Plan
-Pick a fingerprinting method 
-Hashing methods: dHash - compare differences between neighbouring pixels with imagehash python library
-Input image, store in db
-Make database - use SQLite - has built in hamming distance integration
-Smth smth machine learning
-Input movie, takes key frames
-Key frames are fingerprinted, compared with hamming distance
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+First we need to use a script to compile a "database" (it's really just a dictionary that's been dumped into a pickle file for later use). Add the movies/scenes to the "movie_scenes" folder and then run compile.py.
+
+```bash
+python3 compile.py
+```
+
+Then run app.py. This will spawn a locally hosted instance of the website.
+
+```bash
+python3 app.py
+```
+
+Upload the movie scene to the drop box and press submit. It will take a few moments to generate an answer or tell you there's no match in the database (which for this project is quite small).
