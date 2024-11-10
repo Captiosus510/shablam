@@ -40,20 +40,22 @@ def create_inp_keyframes(inp_path):
     extract.extract_middle_keyframes(inp_path, scene_list, output_path)
     return output_path
 
-def find_best_movie(inp_path, data_dict):
+def find_best_movie(inp_path, data_dict, progress_data):
     """
     Finds the movie with the highest cosine similarity to the input video.
     """
     # Create keyframes from input video
     keyframe_dir = create_inp_keyframes(inp_path)
+    progress_data['progress'] = 10
     similarity_scores = []
-
+    num_keyframes = len(os.listdir(keyframe_dir))
     # Load feature vectors from data dictionary
     with os.scandir(keyframe_dir) as entries:
         for keyframe in entries:
             vector = CNN_feature_extraction.create_img_vector(keyframe.path)
             movie_name, similarity = closest_movie_match_per_frame(vector, data_dict)
             similarity_scores.append((movie_name, similarity))
+            progress_data['progress'] += 90 / num_keyframes
 
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
     return similarity_scores
