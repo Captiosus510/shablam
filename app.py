@@ -26,7 +26,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 movie_descriptions = {
     "Inception": ["Rating: 8.8/10", "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster."],
     "Your Name": ["Rating: 8.4/10", "Two teenagers share a profound, magical connection upon discovering they are swapping bodies. Things become even more complicated when they decide to meet in person."],
-    "Ironman": ["Rating: 7.9/10", "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."]
+    "Iron Man": ["Rating: 7.9/10", "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."]
 }
 
 # Variable to store progress
@@ -45,14 +45,14 @@ def index():
             return redirect(request.url)
         
         file = request.files['file']
+
+        # Reset progress for new upload
+        progress_data['progress'] = 0
         
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
-
-            # Reset progress for new upload
-            progress_data['progress'] = 0
 
             # Simulate processing and update progress
             def run_prediction():
@@ -70,7 +70,7 @@ def index():
 
             # Run the prediction
             result = run_prediction()
-            os.remove(filepath)
+            # os.remove(filepath)
             return render_template(
                 'index.html',
                 movie_name=result,
