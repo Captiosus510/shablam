@@ -55,7 +55,7 @@ def find_best_movie(inp_path, data_dict):
             movie_name, similarity = closest_movie_match_per_frame(vector, data_dict)
             similarity_scores.append((movie_name, similarity))
 
-    # similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
+    similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
     return similarity_scores
 
 def main(argv):
