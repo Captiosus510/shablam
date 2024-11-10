@@ -19,6 +19,7 @@ datasets/
 *.zip
 *.tar.gz
 *.7z
+*.pkl
 
 # Ignore trained models and checkpoints
 models/
