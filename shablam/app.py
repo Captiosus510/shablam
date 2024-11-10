@@ -18,6 +18,8 @@ if not os.path.exists(UPLOAD_FOLDER):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+upload_status = None
+
 # Route to handle file upload
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -34,11 +36,15 @@ def index():
             
             # Call your algorithm here to get the movie name
             movie_name = analyze_file(filepath)
+
+            upload_status = 'success'
             
             # Pass the result to the template
-            return render_template('index.html', movie_name=movie_name)
+            return render_template('index.html', movie_name=movie_name, upload_status=upload_status)
     
-    return render_template('index.html')
+    upload_status = 'failure'
+    return render_template('index.html', upload_status=upload_status)
+
 
 # Example function to analyze the file
 def analyze_file(filepath):
