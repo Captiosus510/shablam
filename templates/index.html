@@ -29,6 +29,7 @@
         header h1 {
             font-size: 28px;
             margin: 0;
+            color: #d2d2d2
         }
 
         .content-group {
@@ -57,6 +58,7 @@
             gap: 12px;
             flex: 1; 
             overflow-y: auto;  /* Allow scrolling if content exceeds the box size */
+            color: #d2d2d2
         }
 
         form {
@@ -76,6 +78,7 @@
             text-align: center;       
             margin-top: 20px;
             padding: 12px;
+            font-weight: bold
         }        
 
         .drop-area.hover {
@@ -88,11 +91,13 @@
         }
 
         .button {
-            font-size: 14px;
+            font-size: 18px;
+            font-weight: bold;
             margin: 14px;
-            padding: 6px;
-            border-radius: 5px;
-            background-color: #c1c1c1;
+            padding: 14px;
+            border-radius: 8px;
+            background-color: #45709e;
+            color: #d2d2d2
         } 
     </style>
 </head>
@@ -115,12 +120,13 @@
                 </button>
             </form>
         </div>        
-        <div class="content-output">             
+        <div class="content-output">
             {% if upload_status %}
-                <h2 style="color: #d2d2d2">Predicted Movie: {{ movie_name }}</h2>
+                <h2>Predicted Movie: {{ movie_name }}</h2>
+                <p> <strong>{{ movie_descriptions.get(movie_name, "This movie doesnt exist?")[0] }}</strong><br><br>{{ movie_descriptions.get(movie_name, "This movie doesnt exist?")[1] }}</p>
             {% endif %}
             {% if not upload_status %}
-                <h2 style="color: #d2d2d2">No clip inputted</h2>
+                <h2>No clip inputted</h2>
             {% endif %}
         </div>
         
