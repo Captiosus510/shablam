@@ -7,3 +7,8 @@ scipy
 seaborn
 opencv-contrib-python
 torchvision
+torch
+flask
+scenedetect
+pandas
+opencv-python

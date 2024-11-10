@@ -19,6 +19,7 @@ datasets/
 *.zip
 *.tar.gz
 *.7z
+*.pkl
 
 # Ignore trained models and checkpoints
 models/
@@ -47,6 +48,7 @@ runs/
 *.avi
 *.mov
 *.mkv
+*.mp4
 
 # Ignore configuration files for credentials
 config.yaml
