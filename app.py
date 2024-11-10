@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from utils import create_database
+from utils.compare import find_best_movie
+import pickle
 
 # Create Flask app
 app = Flask(__name__)
@@ -10,6 +11,9 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'mp4', 'mov', 'avi'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+with open("keyframedata.pkl", "rb") as f:
+    data_dict = pickle.load(f)
 
 # Ensure upload directory exists
 if not os.path.exists(UPLOAD_FOLDER):
@@ -43,15 +47,21 @@ def index():
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
+            upload_status = 'success'
             
             # Call your algorithm here to get the movie name
-            # movie_name = find_best_movie(filepath)
-            movie_name = ""
+            ouput = ""
+            movie_scores = find_best_movie(filepath, data_dict)
+            movie_name, match_val = movie_scores[0]
+            if match_val > 0.6:
+                ouput = movie_name
+            else:
+                ouput = "No matching movie found."
 
             upload_status = True
             
             # Pass the result to the template
-            return render_template('index.html', movie_name=movie_name, movie_descriptions=movie_descriptions, upload_status=upload_status)
+            return render_template('index.html', movie_name=ouput, movie_descriptions=movie_descriptions, upload_status=upload_status)
     
     upload_status = False
     return render_template('index.html', upload_status=upload_status)
