@@ -1,7 +1,6 @@
-import extract
+from . import extract, CNN_feature_extraction
 import os
 import sys
-import CNN_feature_extraction
 
 def create_movie_keyframes(video_path):
     """

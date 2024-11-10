@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-# from ..backend.compare import find_best_movie
+from utils import create_database
 
 # Create Flask app
 app = Flask(__name__)

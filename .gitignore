@@ -44,7 +44,6 @@ runs/
 *.png
 *.bmp
 *.tiff
-*.mp4
 *.avi
 *.mov
 *.mkv
@@ -58,7 +57,6 @@ credentials.json
 # Ignore package dependencies
 Pipfile.lock
 poetry.lock
-requirements.txt
 
 # Ignore environment files
 .env
