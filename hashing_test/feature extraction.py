@@ -60,7 +60,12 @@ def find_closest_match(query_image_path, feature_list):
     query_features = extract_features(transform_image(query_image_path)).numpy()
 
     # Compute cosine similarity with each feature vector in the list
-    similarities = [1 - cosine(query_features, features) for features in feature_list]
+    similarities = []
+    for features in feature_list:
+        # cosine is not regular cosine, it instead computes cosine similarity which is
+        # (A dot B)/(||A|| ||B||)
+        # cosine distance is 1 - cosine 
+        similarities.append(1-cosine(query_features, features))
 
     # Sort by similarity (highest similarity first)
     sorted_similarities = sorted(enumerate(similarities), key=lambda x: x[1], reverse=True)
