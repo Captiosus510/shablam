@@ -1,10 +1,7 @@
 import os, sys
-import extract
-import CNN_feature_extraction
-import create_database
 from scipy.spatial.distance import cosine
 import shutil
-
+from . import extract, CNN_feature_extraction, create_database
 
 def closest_movie_match_per_frame(frame_vector, data_dict):
     """
