@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #ffffff;
+            background-color: #282828;
             font-family: sans-serif;
             display: flex;
             flex-direction: column; /* Stack header and content vertically */
@@ -21,7 +21,7 @@
         }
 
         header {
-            background-color: #dfdcdc;
+            background-color: #45709e;
             width: 100%;
             padding: 12px;
         }
@@ -54,14 +54,21 @@
             gap: 12px; 
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
         .drop-area {
             width: 80%;
             height: 550px;
-            border: 2px dashed #007bff;
+            border: 4px dashed #c1c1c1;
             display: flex;
-            align-items: center;     /* Center vertically */
-            justify-content: center;  /* Center horizontally */
-            text-align: center;       /* Center text within the box */
+            align-items: center;
+            justify-content: center;  
+            text-align: center;       
             margin-top: 20px;
             padding: 12px;
         }        
@@ -80,31 +87,33 @@
             margin: 14px;
             padding: 6px;
             border-radius: 5px;
-            background-color: #c3d3f5;
+            background-color: #c1c1c1;
         } 
     </style>
 </head>
 <body>
     <header>
-        <h1>Shablam</h1>
+        <h1 style="color: #e6e6e6">Shablam</h1>
     </header>
     
     <div class="content-group">
-        <div class = "content-input">
-            <!-- Drag and Drop Area -->
-            <div id="drop-area" class="drop-area">
-                <p>Drag & Drop a file here, or click to select one</p>
-                <input type="file" name="file" id="file" class="file-input" required>
-            </div>
-            
-            <button id="predict-movie-button" type="button" class="button">
-                What movie is this?
-            </button>
-        </div>
+        <div class="content-input">
+            <!-- Wrap the drop area and button in a form -->
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <div id="drop-area" class="drop-area">
+                    <p style="color: #d2d2d2">Drag & Drop a file here, or click to select one</p>
+                    <input type="file" name="file" id="file" class="file-input" required>
+                </div>
+                
+                <button id="predict-movie-button" type="submit" class="button">
+                    What movie is this?
+                </button>
+            </form>
+        </div>        
         <div class="content-output">
             <!-- If a movie name was returned, display it -->
             {% if movie_name %}
-                <h2>Predicted Movie: {{ movie_name }}</h2>
+                <h2 style="color: #d2d2d2">Predicted Movie: {{ movie_name }}</h2>
             {% endif %}    
         </div>
         
@@ -113,7 +122,7 @@
     <script>
         // JavaScript to handle drag-and-drop functionality
         const dropArea = document.getElementById("drop-area");
-        const fileInput = document.getElementById("file-upload");
+        const fileInput = document.getElementById("file");  // Corrected reference here
 
         // Handle drag events for file input
         dropArea.addEventListener("dragover", (event) => {
