@@ -37,6 +37,7 @@ def index():
             
             # Call your algorithm here to get the movie name
             # movie_name = find_best_movie(filepath)
+            movie_name = ""
 
             upload_status = 'success'
             
