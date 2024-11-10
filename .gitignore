@@ -47,6 +47,7 @@ runs/
 *.avi
 *.mov
 *.mkv
+*.mp4
 
 # Ignore configuration files for credentials
 config.yaml
