@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-First we need to use a script to compile a "database" (it's really just a dictionary that's been dumped into a pickle file for later use). Add the movies/scenes to the "movie_scenes" folder and then run compile.py.
+First we need to use a script to compile a "database" (it's really just a dictionary that's been dumped into a pickle file for later use). Add the movies/scenes to the "movie_scenes" folder and then run compile.py. Don't worry if this takes a while. 
 
 ```bash
 python3 compile.py
@@ -25,3 +25,5 @@ python3 app.py
 ```
 
 Upload the movie scene to the drop box and press submit. It will take a few moments to generate an answer or tell you there's no match in the database (which for this project is quite small).
+
+This project was created by Mahd, Prem, Aditya, Dinara, and Fogil.
