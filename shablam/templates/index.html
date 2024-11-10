@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Prediction</title>
+    <style>
+        body {
+            background-color: #242424;
+            font-family: sans-serif;
+        }
+        .drop-area {
+            height: 50%;
+            width: 50%;  
+            border: 2px dashed #007bff;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .drop-area.hover {
+            border-color: #28a745;
+            background-color: #e7f5e7;
+        }
+        .file-input {
+            display: none; /* Hide the original file input */
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload an Image or Video</h1>
+
+    <!-- Drag and Drop Area -->
+    <div id="drop-area" class="drop-area">
+        <p>Drag & Drop a file here, or click to select one</p>
+        <input type="file" name="file" id="file" class="file-input" required>
+    </div>
+
+    <!-- Form to upload file -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="file-upload" class="file-input" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- If a movie name was returned, display it -->
+    {% if movie_name %}
+        <h2>Predicted Movie: {{ movie_name }}</h2>
+    {% endif %}
+
+    <script>
+        // JavaScript to handle drag-and-drop functionality
+        const dropArea = document.getElementById("drop-area");
+        const fileInput = document.getElementById("file-upload");
+
+        // When the user drags a file over the drop area
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();  // Prevent the default behavior (prevent the file from being opened)
+            dropArea.classList.add("hover");
+        });
+
+        // When the user drags a file out of the drop area
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("hover");
+        });
+
+        // When the user drops a file
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();  // Prevent the default behavior (e.g., file opening)
+            dropArea.classList.remove("hover");
+
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;  // Programmatically set the file input's files to the dropped files
+            }
+        });
+
+        // When the user clicks on the drop area, simulate a file input click
+        dropArea.addEventListener("click", () => {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>
