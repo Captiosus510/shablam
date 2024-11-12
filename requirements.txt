@@ -1,4 +1,3 @@
-hdbscan
 matplotlib
 numpy
 scikit-image
