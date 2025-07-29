@@ -30,5 +30,5 @@ This project was created by Mahd, Prem, Aditya, Dinara, and Fogil.
 
 ## More Info
 
-Find more info at our devost:
+Find more info at our devpost:
 https://devpost.com/software/shabam
