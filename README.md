@@ -27,3 +27,8 @@ python3 app.py
 Upload the movie scene to the drop box and press submit. It will take a few moments to generate an answer or tell you there's no match in the database (which for this project is quite small).
 
 This project was created by Mahd, Prem, Aditya, Dinara, and Fogil.
+
+## More Info
+
+Find more info at our devost:
+https://devpost.com/software/shabam
