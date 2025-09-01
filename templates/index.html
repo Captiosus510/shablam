@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Shablam</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="/static/logo.png">
 </head>
 <body>
     <header>
+        <img src="/static/logo.png" alt="Shablam Logo" class="logo">
+        <h1>Shablam</h1>
     </header>
     
     <div class="content-group">
         <div class="content-input">
             <!-- Wrap the drop area and button in a form -->
-            <form id="upload-form" action="/" method="POST" enctype="multipart/form-data">
+            <form id="upload-form" enctype="multipart/form-data">
                 <div id="drop-area" class="drop-area">
                     <p style="color: #ff66b3">Drag & Drop a file here, or click to select one</p>
                     <input type="file" name="file" id="file" class="file-input" required>
@@ -30,23 +33,17 @@
                     <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
                 </div>
             </div>
+            <div class="confirmation-message" style="display:none;"></div>
         </div>        
         <div class="content-output">
-            {% if upload_status and movie_name != "No matching movie found." %}
-                <h2>Predicted Movie: {{ movie_name }}</h2>
-                <p><strong>{{ movie_descriptions.get(movie_name, "This movie doesn’t exist?")[0] }}</strong><br><br>{{ movie_descriptions.get(movie_name, "This movie doesn’t exist?")[1] }}</p>
-                
-                {% if image %}
-                    <img src="{{ image }}" alt="Movie Image" style="max-width: 300px; margin-top: 20px;">
-                {% endif %}
-            {% elif upload_status %}
-                <h2>Predicted Movie: No matching movie found.</h2>
-            {% else %}
-                <h2>No clip inputted</h2>
-            {% endif %}
+            <h2>Upload a clip to get started</h2>
+            <img src="/static/hello-kitty.gif" alt="Hello Kitty" class="hello-kitty">
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        console.log('Inline script test - this should appear in console');
+    </script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
